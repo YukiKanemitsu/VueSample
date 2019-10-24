@@ -29,22 +29,23 @@ var vm = new Vue({
         }
     },
     computed: { 
-        errorMessageClass: function () {
-            return {
-                error: !this.canBuy
-            }
-        },
         totalPrice: function () {
             return this.items.reduce(function (sum, item) {
                 return sum + (item.price * item.quantity)
             }, 0)
         },
         totalPriceWithTax: function () {
-            //算出プロパティに依存した算出プロパティの定義できる
             return Math.floor(this.totalPrice * 1.08)
         },
         canBuy: function () {
             return this.totalPrice >= 1000 //1000円以上から購入可能にする
+        },
+        errorMessageStyle: function () {
+            //canBuyが偽の時に赤く表示する
+            return {
+                border: this.canBuy ? '' : '1px solid red',
+                color: this.canBuy ? '' : 'red',
+            }
         }
     }
 })

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hamburger menu</title>
+  <script src="https://unpkg.com/vue@2.5.17"></script>
+  <link rel="stylesheet" href="./css/hamburger-menu.css" media="all">
+</head>
+<body>
+ <div id="app">
+  <header class="header">
+    <div class="header__menu">
+      <div class="header__menu__line" @click="naviOpen" :class="{'is-active': active}">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+   <transition name="nav">
+  <nav class="nav" v-show="nav">
+    <ul class="nav__wrap">
+      <li><a href="#">AAA</a></li>
+      <li><a href="#">BBB</a></li>
+      <li><a href="#">CCC</a></li>
+      <li><a href="#">DDD</a></li>
+      <li><a href="#">EEE</a></li>
+    </ul>
+  </nav>
+ </transition>
+ </div>
+ <script>
+new Vue ({
+  el: '#app',
+  data: {
+    active: false,
+    navi: false,
+  },
+  methods: {
+    naviOpen: function() {
+      this.active = !this.active;
+      this.navi = !this.navi;
+    }
+  }
+})
+  </script>
+</body>
+</html>
